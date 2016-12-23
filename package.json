@@ -26,7 +26,9 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --display-modules --display-chunks --config build/webpack.config.js",
+    "dev":"node build/dev-server.js  "
   },
   "keywords": [],
   "author": "",

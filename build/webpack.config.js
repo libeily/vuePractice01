@@ -1,10 +1,11 @@
 // nodejs 中的path模块
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var webpack = require('webpack');
 
 module.exports = {
   // 入口文件，path.resolve()方法，可以结合我们给定的两个参数最后生成绝对路径，最终指向的就是我们的index.js文件
-  entry: path.resolve(__dirname, '../app/index.js'),
+  entry:['webpack-hot-middleware/client',path.resolve(__dirname, '../app/index.js')],
   // 输出配置
   output: {
     path: path.resolve(__dirname, '../output/static'),
@@ -39,6 +40,9 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'app/index.html',
       template: path.resolve(__dirname, '../app/index.html'),
